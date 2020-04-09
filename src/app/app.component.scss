@@ -1,0 +1,35 @@
+mat-sidenav-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  mat-sidenav-content {
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+    flex-direction: column;
+  }
+}
+
+mat-form-field {
+  min-width: 300px;
+  margin-bottom: 50px;
+}
+
+table {
+  width: calc(100% - 40px);
+  margin-bottom: 150px;
+}
+
+::ng-deep {
+  th,
+  td {
+    text-align: center !important;
+  }
+
+  th {
+    text-transform: uppercase;
+  }
+}
