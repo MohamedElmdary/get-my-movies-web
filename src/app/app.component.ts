@@ -97,6 +97,13 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
+  onClickCopy(txt: string) {
+    navigator.clipboard
+      .writeText(txt)
+      .then()
+      .catch();
+  }
+
   ngOnDestroy() {
     this.options$.unsubscribe();
   }
