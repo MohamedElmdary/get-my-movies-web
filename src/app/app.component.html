@@ -40,7 +40,7 @@
     <p *ngIf="title && !loading && !table.length && errorMessage">
       {{ errorMessage }}
     </p>
-    <ng-container *ngIf="table.length">
+    <ng-container *ngIf="table.length && !loading">
       <table mat-table [dataSource]="table" class="mat-elevation-z8">
         <ng-container matColumnDef="no">
           <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -65,13 +65,21 @@
               [disabled]="downloadLoading"
               (click)="onDownloadMovie(i, element['url'])"
             >
-              <ng-container *ngIf="downloadLoading && downloadIndex === i">
-                <mat-spinner></mat-spinner>
-              </ng-container>
-              <ng-container *ngIf="!(downloadLoading && downloadIndex === i)">
-                Download
-              </ng-container>
+              {{
+                downloadLoading && downloadIndex === i
+                  ? "Loading..."
+                  : "Get Link"
+              }}
             </button>
+            <a
+              *ngIf="element['link']"
+              mat-button
+              color="warn"
+              [href]="element['link']"
+              target="_blank"
+            >
+              Download
+            </a>
           </td>
         </ng-container>
 

@@ -11,6 +11,7 @@ export interface Download {
   quality: string;
   size: string;
   url: string[];
+  link?: string;
 }
 
 @Injectable({
@@ -30,6 +31,8 @@ export class ApiService {
   }
 
   downloadApi(call: string, auth: string) {
-    return this.http.get(`${environment.api}/download/${call}/${auth}`);
+    return this.http.get<{ link: string }>(
+      `${environment.api}/download/${call}/${auth}`
+    );
   }
 }

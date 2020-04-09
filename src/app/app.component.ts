@@ -84,8 +84,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.downloadLoading = true;
     this.downloadIndex = index;
     this.apiService.downloadApi(call, auth).subscribe(
-      v => {
-        console.log(v);
+      ({ link }) => {
+        this.table[index].link = link;
         this.downloadLoading = false;
         this.downloadIndex = -1;
       },
