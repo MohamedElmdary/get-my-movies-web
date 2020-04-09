@@ -7,7 +7,8 @@ import {
   distinctUntilChanged,
   filter,
   map,
-  concatAll
+  concatAll,
+  switchMap
 } from 'rxjs/operators';
 
 @Component({
@@ -53,10 +54,9 @@ export class AppComponent implements OnInit, OnDestroy {
           this.options = null;
           return false;
         }),
-        map(val => {
+        switchMap(val => {
           return this.apiService.searchApi(val);
-        }),
-        concatAll()
+        })
       )
       .subscribe(v => {
         this.options = v;
