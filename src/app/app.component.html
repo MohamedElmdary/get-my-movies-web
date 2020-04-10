@@ -72,14 +72,23 @@
                   : "Get Link"
               }}
             </button>
-            <button
+            <a
+              *ngIf="element['link']"
+              mat-button
+              color="warn"
+              [href]="element['link']"
+              target="_blank"
+            >
+              Download
+            </a>
+            <!-- <button
               *ngIf="element['link']"
               mat-button
               color="warn"
               (click)="onClickCopy(element['link'])"
             >
               Copy
-            </button>
+            </button> -->
           </td>
         </ng-container>
 
